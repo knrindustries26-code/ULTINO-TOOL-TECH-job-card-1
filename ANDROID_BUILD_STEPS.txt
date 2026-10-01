@@ -1,0 +1,47 @@
+ULTINO TOOL TECH JOB CARD - ANDROID APK BUILD
+
+1. This project can be built with Gradle in CI/cloud; Android Studio is NOT required on your PC. If you build locally, Android Studio/SDK is still one possible route.
+2. During setup install Android SDK, Android SDK Platform-Tools and Android SDK Build-Tools.
+3. Install Node.js LTS if it is not already installed.
+4. Extract this project to a simple folder, e.g. C:\\UltinoJobCard.
+5. Open Command Prompt in that folder.
+6. Run:
+   npm install
+7. Build the web app:
+   npm run build
+8. Create the Android project:
+   npx cap add android
+9. Copy the Android platform files into the project:
+   npx cap sync android
+10. Open Android Studio:
+   npx cap open android
+11. In Android Studio wait for Gradle sync to finish.
+12. Select Build > Build Bundle(s) / APK(s) > Build APK(s).
+13. The debug APK will normally be at:
+   android\\app\\build\\outputs\\apk\\debug\\app-debug.apk
+14. Copy app-debug.apk to the phone, allow installation from that source, and install.
+
+IMPORTANT:
+- Do not rename the ZIP to .apk.
+- Do not use a generic online ZIP-to-APK converter.
+- The APK must be built by Gradle/Android Studio.
+
+JOB RUN ESTIMATE:
+- Formula: (path length in mm x thickness in mm x quantity) / cutting rate in mm²/min.
+- Default cutting rate: 20 mm²/min.
+- This is an estimate. Calibrate the rate from actual machine jobs; the start/stop timer remains the actual run record.
+
+SUPABASE:
+- Copy .env.example to .env and fill in your Supabase URL and anon key.
+- Run the SQL in supabase-schema.sql in Supabase SQL Editor.
+- Use the same Supabase project/account settings on every phone/PC that should share the jobs.
+
+
+MOBILE FIXES INCLUDED IN THIS VERSION:
+- Job photos are normalized before PDF embedding so Android camera images appear in generated PDFs.
+- Local IndexedDB remains the offline source of truth.
+- Cloud sync re-reads local records after pulling remote changes to reduce overwrite races.
+- Automatic sync checks every 5 seconds while the app is active, plus reconnect/focus/visibility sync.
+- Supabase Realtime subscription is used when available; polling remains the fallback because realtime events can be missed.
+- Restore/import queues records for cloud backup automatically.
+- Fresh phones no longer seed demo data repeatedly once the local database has been initialized.

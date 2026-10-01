@@ -1,0 +1,6 @@
+{
+  "name": "ULTINO TOOL TECH - Digital Job Card",
+  "description": "Production tracking, digital job cards, customer and item master, timing and monthly ledger for ULTINO TOOL TECH wire-cut & manufacturing workshop.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
